@@ -231,4 +231,5 @@ app.post('/notification', function(req, res) {
 
 
 // Run app
+app.listen(port);
 setup();
