@@ -217,20 +217,18 @@ function turnBulbOff() {
 	bubl.setState(bulbId, {power: 'off'}, errHandler);
 }
 
-// Friend notification API
-app.post('/notification', function(req, res) {
-	console.log('PURPLE');
+app.route('/notification').put(function(){
+  console.log('PURPLE');
 	// flash bulb purple
 	bulb.pulse(bulbId, {
 		color: 'hue:295 saturation:1.0',
-	    period: 0.5,
-	    cycles: 3,
-	    persist: false,
-	    power_on: false,
-	    peak: 0.8
-	});
+    period: 0.5,
+    cycles: 3,
+    persist: false,
+    power_on: false,
+    peak: 0.8
+	}, console.log(err));
 });
-
 
 // Run app
 app.listen(port);
