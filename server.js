@@ -49,7 +49,7 @@ var isDefaultWindow = false;
 var isOffWindow = false;
 var isWeekend = false;
 
-app.set('port', process.env.PORT || 3000);
+var port = process.env.PORT || 3000;
 
 // Init bulb
 var bulb = new lifx({
