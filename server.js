@@ -162,7 +162,9 @@ function setTimeWindows() {
     return;
   }
 
-	if (currentTime.hour >= 9 && currentTime.hour < 17) {
+  if(currentTime.hour >= 1 && currentTime < 9) {
+    turnBulbOn();
+  } else if (currentTime.hour >= 9 && currentTime.hour < 17) {
     console.log('between 9am and not 5pm');
     if (currentTime.hour === 9 && currentTime.minutes < 30) {
       console.log('between 9am and 9:29am');
