@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/filbot/traffic-owl/issues"
   },
+  "engines": {
+    "node": "6.11.2"
+  },
   "homepage": "https://github.com/filbot/traffic-owl#readme",
   "dependencies": {
     "express": "^4.16.2",
