@@ -1,0 +1,25 @@
+{
+  "name": "traffic-owl",
+  "version": "1.0.0",
+  "description": "IKEA Owl light that houses a smart bulb and displays colors based on commute travel time",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filbot/traffic-owl.git"
+  },
+  "author": "Filip Grace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filbot/traffic-owl/issues"
+  },
+  "homepage": "https://github.com/filbot/traffic-owl#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "lifx-http-api": "^1.0.3",
+    "request": "^2.83.0"
+  }
+}
