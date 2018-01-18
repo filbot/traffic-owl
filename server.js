@@ -227,7 +227,7 @@ app.route('/notification').put(function(){
     persist: false,
     power_on: false,
     peak: 0.8
-	}, console.log(err));
+	});
 });
 
 // Run app
