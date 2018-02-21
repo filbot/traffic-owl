@@ -195,6 +195,7 @@ function getTime() {
   console.log('getTime');
 	now = new Date();
 	currentTime.hour = now.getHours();
+	console.log('!!!this is the current hour: ', currentTime.hour);
 	currentTime.minutes = now.getMinutes();
 	dayOfTheWeek = now.getDay();
 
