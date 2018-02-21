@@ -217,7 +217,7 @@ function turnBulbOff() {
 	bubl.setState(bulbId, {power: 'off'}, errHandler);
 }
 
-app.route('/notification').put(function(){
+app.route('/notification').get(function(){
 	console.log('PURPLE!');
 	// flash bulb purple
 	bulb.pulse(bulbId, {
