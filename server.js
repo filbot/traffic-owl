@@ -162,29 +162,27 @@ function setTimeWindows() {
     return;
   }
 
-
-  // All times include +3 hour offset for east coast
-  if(currentTime.hour >= 4 && currentTime.hour < 12) {
+  if(currentTime.hour >= 1 && currentTime.hour < 9) {
     turnBulbOn();
-  } else if (currentTime.hour >= 12 && currentTime.hour < 20) {
+  } else if (currentTime.hour >= 9 && currentTime.hour < 17) {
     console.log('between 9am and not 5pm');
-    if (currentTime.hour === 12 && currentTime.minutes < 30) {
+    if (currentTime.hour === 9 && currentTime.minutes < 30) {
       console.log('between 9am and 9:29am');
       turnBulbOff();
     } else {
       console.log('between 9:30am');
       turnBulbOn();
     }
-  } else if (currentTime.hour >= 20 && currentTime.hour < 2) {
+  } else if (currentTime.hour >= 17 && currentTime.hour < 24) {
     console.log('its 5pm and 11pm');
-    if (currentTime.hour === 20 && currentTime.minutes < 30) {
+    if (currentTime.hour === 17 && currentTime.minutes < 30) {
       console.log('its not quite 17:30 yet');
       turnBulbOn();
     } else {
       console.log('its traffic time');
       displayCommuteConditions();
     }
-  } else if (currentTime.hour === 3) {
+  } else if (currentTime.hour === 24) {
     console.log('its midnight');
     turnBulbOff();
   }
@@ -195,7 +193,6 @@ function getTime() {
   console.log('getTime');
 	now = new Date();
 	currentTime.hour = now.getHours();
-	console.log('!!!this is the current hour: ', currentTime.hour);
 	currentTime.minutes = now.getMinutes();
 	dayOfTheWeek = now.getDay();
 
@@ -221,15 +218,15 @@ function turnBulbOff() {
 }
 
 app.route('/notification').put(function(){
-  console.log('PURPLE');
+	console.log('PURPLE!');
 	// flash bulb purple
 	bulb.pulse(bulbId, {
 		color: 'hue:295 saturation:1.0',
-    period: 0.5,
-    cycles: 3,
-    persist: false,
-    power_on: false,
-    peak: 0.8
+	    period: 0.5,
+	    cycles: 3,
+	    persist: false,
+	    power_on: false,
+	    peak: 0.8
 	});
 });
 
