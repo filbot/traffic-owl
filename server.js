@@ -192,7 +192,7 @@ function setTimeWindows() {
 function getTime() {
   console.log('getTime');
 	now = new Date();
-	currentTime.hour = now.getHours();
+	currentTime.hour = now.getHours() - 3; //adjust for east coast time zone for Heroku app
 	currentTime.minutes = now.getMinutes();
 	dayOfTheWeek = now.getDay();
 
