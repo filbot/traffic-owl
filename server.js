@@ -162,27 +162,29 @@ function setTimeWindows() {
     return;
   }
 
-  if(currentTime.hour >= 1 && currentTime.hour < 9) {
+
+  // All times include +3 hour offset for east coast
+  if(currentTime.hour >= 4 && currentTime.hour < 12) {
     turnBulbOn();
-  } else if (currentTime.hour >= 9 && currentTime.hour < 17) {
+  } else if (currentTime.hour >= 12 && currentTime.hour < 20) {
     console.log('between 9am and not 5pm');
-    if (currentTime.hour === 9 && currentTime.minutes < 30) {
+    if (currentTime.hour === 12 && currentTime.minutes < 30) {
       console.log('between 9am and 9:29am');
       turnBulbOff();
     } else {
       console.log('between 9:30am');
       turnBulbOn();
     }
-  } else if (currentTime.hour >= 17 && currentTime.hour < 24) {
+  } else if (currentTime.hour >= 20 && currentTime.hour < 2) {
     console.log('its 5pm and 11pm');
-    if (currentTime.hour === 17 && currentTime.minutes < 30) {
+    if (currentTime.hour === 20 && currentTime.minutes < 30) {
       console.log('its not quite 17:30 yet');
       turnBulbOn();
     } else {
       console.log('its traffic time');
       displayCommuteConditions();
     }
-  } else if (currentTime.hour === 24) {
+  } else if (currentTime.hour === 3) {
     console.log('its midnight');
     turnBulbOff();
   }
@@ -192,7 +194,7 @@ function setTimeWindows() {
 function getTime() {
   console.log('getTime');
 	now = new Date();
-	currentTime.hour = now.getHours() - 3; //adjust for east coast time zone for Heroku app
+	currentTime.hour = now.getHours();
 	currentTime.minutes = now.getMinutes();
 	dayOfTheWeek = now.getDay();
 
@@ -228,6 +230,10 @@ app.route('/notification').put(function(){
     power_on: false,
     peak: 0.8
 	});
+});
+
+app.route('/').get(function(){
+  console.log('No sleep for you!');
 });
 
 // Run app
