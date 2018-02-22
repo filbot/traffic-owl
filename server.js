@@ -215,7 +215,7 @@ function turnBulbOn() {
 // Turn bulb off
 function turnBulbOff() {
   console.log('turnBulbOff');
-	bubl.setState(bulbId, {power: 'off'}, errHandler);
+	bulb.setState(bulbId, {power: 'off'}, errHandler);
 }
 
 app.route('/notification').get(function(){
