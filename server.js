@@ -191,8 +191,8 @@ function setTimeWindows() {
 
 // Set current time object
 function getTime() {
-  console.log('getTime');
 	now = new Date();
+  console.log('get time: ', now);
 	currentTime.hour = now.getHours();
 	currentTime.minutes = now.getMinutes();
 	dayOfTheWeek = now.getDay();
@@ -202,8 +202,6 @@ function getTime() {
 	} else {
 		isWeekend = false;
 	}
-
-	console.log('Current times: ', 'hour: ', currentTime.hour, 'minutes: ', currentTime.minutes, 'day of the week: ', dayOfTheWeek);
 }
 
 // Turn bulb on
