@@ -209,7 +209,7 @@ function turnBulbOff() {
 	bulb.setState(bulbId, {power: 'off'}, errHandler);
 }
 
-app.route('/notification').get(function(){
+app.route('/notification').get(function(req, res){
 	console.log('PURPLE!');
 	// flash bulb purple
 	bulb.pulse(bulbId, {
@@ -220,6 +220,8 @@ app.route('/notification').get(function(){
 	    power_on: false,
 	    peak: 0.8
 	});
+
+  res.sendStatus(200)
 });
 
 app.route('/').get(function(req, res){
