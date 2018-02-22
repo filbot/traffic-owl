@@ -164,27 +164,20 @@ function setTimeWindows() {
   }
 
   if(currentTime.hour >= 1 && currentTime.hour < 9) {
-    turnBulbOn();
+    turnBulbOff();
   } else if (currentTime.hour >= 9 && currentTime.hour < 17) {
-    console.log('between 9am and not 5pm');
     if (currentTime.hour === 9 && currentTime.minutes < 30) {
-      console.log('between 9am and 9:29am');
       turnBulbOff();
     } else {
-      console.log('between 9:30am');
       turnBulbOn();
     }
   } else if (currentTime.hour >= 17 && currentTime.hour < 24) {
-    console.log('its 5pm and 11pm');
     if (currentTime.hour === 17 && currentTime.minutes < 30) {
-      console.log('its not quite 17:30 yet');
       turnBulbOn();
     } else {
-      console.log('its traffic time');
       displayCommuteConditions();
     }
   } else if (currentTime.hour === 24) {
-    console.log('its midnight');
     turnBulbOff();
   }
 }
