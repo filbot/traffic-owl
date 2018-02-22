@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var request = require("request");
+var path = require('path');
+var request = require('request');
 var lifx = require('lifx-http-api');
 var bulbId = process.env.BULB_ID;
 var googleKey = process.env.TRAFFIC_MATRIX_KEY;
@@ -230,8 +231,8 @@ app.route('/notification').get(function(){
 	});
 });
 
-app.route('/').get(function(){
-  console.log('No sleep for you!');
+app.route('/').get(function(req, res){
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 // Run app
