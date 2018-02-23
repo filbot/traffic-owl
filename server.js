@@ -1,13 +1,15 @@
+// Local package variables
 var express = require('express');
 var app = express();
 var path = require('path');
 var request = require('request');
 var lifx = require('lifx-http-api');
+
+// Enviorment variables
 var bulbId = process.env.BULB_ID;
-var googleKey = process.env.TRAFFIC_MATRIX_KEY;
-var origin = process.env.ROUTE_ORIGIN;
-var destination = process.env.ROUTE_DESTINATION;
-var distanceMarixEndpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=driving&departure_time=now&origins=' + origin + '&destinations=' + destination + '&key=' + googleKey;
+var distanceMarixEndpoint = process.env.DISTANCE_MATRIX_ENDPOINT;
+var port = process.env.PORT || 3000;
+
 var isBulbOn = false;
 var bulbColors = {
   white: {
@@ -49,8 +51,6 @@ var isCommuteWindow = false;
 var isDefaultWindow = false;
 var isOffWindow = false;
 var isWeekend = false;
-
-var port = process.env.PORT || 3000;
 
 // Init bulb
 var bulb = new lifx({
@@ -128,21 +128,15 @@ function getTrafficData(url) {
 
 // Set bulb color according to commute time
 function runTrafficProgram(travelTime) {
-  console.log('setting bulb color according to a travel time of ', travelTime);
   if (travelTime >= 48) {
-    console.log('traffic sucks');
     setBulbColor(bulbColors.red);
   } else if (travelTime >= 41) {
-    console.log('traffic sucks some');
     setBulbColor(bulbColors.yellowred);
   } else if (travelTime >= 34) {
-    console.log('traffic sucks a little');
     setBulbColor(bulbColors.yellow);
   } else if (travelTime >= 28) {
-    console.log('traffic is not that bad');
     setBulbColor(bulbColors.yellowgreen);
   } else {
-    console.log('no traffic');
     setBulbColor(bulbColors.green);
   }
 }
